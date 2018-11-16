@@ -1,0 +1,41 @@
+1.android_metadata表
+  rowid ：行id 
+  local：跟随系统语言而改变 数据只存在一条
+2.workspaceScreens表
+  _id ：id    
+  screenRank(屏幕id     
+  modified：被修改的时间
+2.favorites表
+  _id ：id    
+  title：桌面图标/文件夹下的文字
+  intent：启动app的intent    
+  container：包裹favorite的容器（其实就是通过int来区分） 同一文件夹内的、hotseat内的、所有屏幕内的container一致
+  screen：app所处的屏幕
+  cellX：cell的x坐标
+  cellY：cell的y坐标
+  spanX：favorite 的span x跨度
+  spanY：favorite 的span Y跨度
+  itemType：
+    ITEM_TYPE_APPLICATION = 0
+    ITEM_TYPE_SHORTCUT = 1
+    ITEM_TYPE_FOLDER = 2
+    ITEM_TYPE_APPWIDGET = 4
+    ITEM_TYPE_CUSTOM_APPWIDGET = 5
+ 		ITEM_TYPE_DEEP_SHORTCUT = 6
+
+  appWidgetId：widget的ID  可能为-1  NO_ID = -1
+  iconPackage：图标包的名字
+  iconResource：图标资源名
+  icon：自定义的图标bitmap
+  appWidgetProvider：部件provider的容器名 
+    例如 com.android.calendar/com.android.calendar.widget.AgendaWidgetProvider
+  modified：最近修改的时间
+  restored：指明这个item是否恢复并且尚未约束成功？
+  profileId：item在cell中的配置id？
+  rank：在文件夹或者hotseat中的已经排好序的位置 例如：同一文件夹内的app 
+  options：给ItemInfo存储的通用的flag
+
+注：
+  0.与8.0源码比较 测试机小米 MAX
+  1.span代表图标、小控件、文件夹的宽高（最小单位与cell一致）
+  2.cell的x y范围由所处状态决定（屏幕内？文件夹内？起始位置坐上角（x,y）=(0,0))
